@@ -2,10 +2,7 @@ import express from 'express'
 import path from 'path'
 import multer from 'multer'
 
-import {default as mongodb} from "mongodb";
-
-const database = mongodb.MongoClient;
-const urlDb = "mongodb+srv://artem:WebDevelop@fullstackproject.gx3iiu1.mongodb.net/?retryWrites=true&w=majority"
+import {deleteData, getData, pushData, updateData, uploadImage} from './Controllers/Requests.js'
 
 const storage = multer.diskStorage({
     destination: (_, __, cb) => {
@@ -19,43 +16,31 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const app = express()
+const __dirname = path.resolve()
+
 app.use(express.json())
 app.use('/uploads', express.static('uploads'))
-
-const __dirname = path.resolve()
 
 app.set("view engine", "ejs")
 app.set("views", path.resolve(__dirname, "ejs"))
 
-
-
 app.get('/', (req, res) => {
-    res.render("index", {title: "Main Page"})
+    res.render("index", {title: "Main Page", active: "main"})
 })
 
-app.post('/pushData', (req, res) => {
-     database.connect(urlDb, (error, db) => {
-        if (error) return res.status(504).send({error: "Database connection has failed"});
-        const dbo = db.db("BU-store");
-        dbo.collection("products").find({}).toArray((err, result) => {
-            if (err) throw err;
-            const data = {
-                _id: result.length + 1,
-                name: req.body.name,
-                price: req.body.price
-            };
-            dbo.collection("products").insertOne(data, (error) => {
-                if (error) throw error;
-                res.send({
-                    message: "Success",
-                })
-                db.close()
-            })
-        })
-    })
+app.get('/features', (req, res) => {
+    res.render('features', {title: "Main Features", active: "features"})
 })
 
-app.listen(4444, (err) => {
+app.get('/getData', getData)
+app.post('/pushData', pushData)
+app.delete('/deleteData/:id', deleteData)
+app.patch('/updateData/:id', updateData)
+// ===== THE PICTURE ===== //
+app.post('/upload', upload.single('image'), uploadImage);
+
+const port = 4444;
+app.listen(port, (err) => {
     if (err) return console.log("Server crushed");
-    console.log("Server OK")
+    console.log("Server OK;", `http://localhost:${port}`)
 })
