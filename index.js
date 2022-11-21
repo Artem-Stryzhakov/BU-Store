@@ -1,4 +1,8 @@
+// https://www.bezkoder.com/node-js-express-login-mongodb/
+
 import express from 'express'
+/*import cors from 'cors'
+import cookieSession from 'cookie-session'*/
 import path from 'path'
 import multer from 'multer'
 
@@ -16,9 +20,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const app = express()
+app.use(express.json())
+
 const __dirname = path.resolve()
 
-app.use(express.json())
 app.use('/uploads', express.static('uploads'))
 app.use(express.static(path.join(__dirname, "public")));
 

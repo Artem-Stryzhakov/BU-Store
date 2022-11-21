@@ -1,4 +1,5 @@
-import {default as mongodb, ObjectId} from "mongodb";
+import {default as mongodb} from "mongodb";
+const {ObjectId} = mongodb;
 
 const database = mongodb.MongoClient;
 const urlDb = "mongodb+srv://artem:WebDevelop@fullstackproject.gx3iiu1.mongodb.net/?retryWrites=true&w=majority"
