@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import path from 'path'
 import multer from 'multer'
 
-import {registerValidation} from './validations/auth.js'
+import {loginValidation, registerValidation } from './validations/auth.js'
 
 import checkAuth from "./utils/checkAuth.js";
 
@@ -49,7 +49,7 @@ app.get('/features', (req, res) => {
     res.render('features', {title: "Main Features", active: "features"})
 })
 
-app.post('/auth/login', UserController.login)
+app.post('/auth/login', loginValidation, UserController.login)
 app.post('/auth/register', registerValidation, UserController.register)
 app.post('/auth/me', checkAuth, UserController.getMe)
 
