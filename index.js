@@ -49,6 +49,10 @@ app.get('/features', (req, res) => {
     res.render('features', {title: "Main Features", active: "features"})
 })
 
+app.get('/express_backend', (req, res) => { //Line 9
+    res.send({ message: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+});
+
 app.post('/auth/login', loginValidation, UserController.login)
 app.post('/auth/register', registerValidation, UserController.register)
 app.post('/auth/me', checkAuth, UserController.getMe)
@@ -60,7 +64,9 @@ app.patch('/updateData/:id', checkAuth, PostController.updateData)
 // ===== THE PICTURE ===== //
 app.post('/upload', upload.single('image'), checkAuth, PostController.uploadImage);
 
-const port = 4444;
+
+
+const port = process.env.PORT || 4444;
 app.listen(port, (err) => {
     if (err) return console.log("Server crushed");
     console.log("Server OK;", `http://localhost:${port}`)
