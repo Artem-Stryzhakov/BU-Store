@@ -1,4 +1,5 @@
-import {validationResult} from "express-validator";
+import expressValidator from "express-validator";
+const validationResult = expressValidator.validationResult;
 import bcrypt from "bcrypt";
 import UserModel from "../models/User.js";
 import jwt from "jsonwebtoken";

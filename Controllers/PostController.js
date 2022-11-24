@@ -1,10 +1,15 @@
 import {default as mongodb} from "mongodb";
 const {ObjectId} = mongodb;
 
+import mongoose from "mongoose";
+import ProductModel from "../models/Product.js";
+
 const database = mongodb.MongoClient;
 const urlDb = "mongodb+srv://artem:WebDevelop@fullstackproject.gx3iiu1.mongodb.net/?retryWrites=true&w=majority"
 
-export const getData = (req, res) => {
+mongoose.connect("mongodb+srv://artem:WebDevelop@fullstackproject.gx3iiu1.mongodb.net/BU-store?retryWrites=true&w=majority");
+
+export const getData = async (req, res) => {
     database.connect(urlDb, (error, db) => {
         if (error) return res.status(504).send({error: "Database connection has failed"});
         const dbo = db.db("BU-store");
