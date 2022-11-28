@@ -45,7 +45,6 @@ export const register = async(req, res) => {
             message: "Не удалось зарегистрироваться",
         })
     }
-    // console.log(user.createdAt)
 }
 
 export const login = async (req, res) => {

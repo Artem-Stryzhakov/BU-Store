@@ -1,8 +1,21 @@
+body {
+    background-color: hsl(0, 0%, 96%);
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
 
+#searchForm {
+    margin: auto;
+}
+
 #authButtons Button {
     border-radius: 20px;
-    margin-left: 10px;
+}
+
+#authButtons {
+    display: flex;
+    gap: 10px;
+    margin: 5px;
 }
