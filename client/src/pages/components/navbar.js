@@ -5,9 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {Link} from "react-router-dom";
+
+import {LoginModal, RegistrationModal} from '../AuthModals'
 
 export const NavScrollExample = () => {
+    const [modalShow1, setModalShow1] = React.useState(false);
+    const [modalShow2, setModalShow2] = React.useState(false);
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
@@ -44,12 +47,16 @@ export const NavScrollExample = () => {
                         <Button variant="outline-primary">Search</Button>
                     </Form>
                     <div id={'authButtons'}>
-                        <Link to={'/auth'}>
-                            <Button variant={"outline-success"}>Log in</Button>
-                        </Link>
-                        <Link to={'/register'}>
-                            <Button variant={"outline-success"}>Sign in</Button>
-                        </Link>
+                        <Button variant={"outline-success"} onClick={() => setModalShow1(true)}>Log in</Button>
+                        <LoginModal
+                            show={modalShow1}
+                            onHide={() => setModalShow1(false)}
+                        />
+                        <Button variant={"outline-success"} onClick={() => setModalShow2(true)}>Sign in</Button>
+                        <RegistrationModal
+                            show={modalShow2}
+                            onHide={() => setModalShow2(false)}
+                        />
                     </div>
                 </Navbar.Collapse>
             </Container>

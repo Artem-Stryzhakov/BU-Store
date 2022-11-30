@@ -1,9 +1,16 @@
 import React from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCard, MDBCardBody} from 'mdb-react-ui-kit';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-export const logIn = () => {
+export const LoginModal = (props) => {
     return (
-        <div>
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
             <MDBContainer fluid className='p-4'>
 
                 <MDBRow>
@@ -29,7 +36,7 @@ export const logIn = () => {
                                 <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
                                 <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
 
-                                <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
+                                <Button className='w-100 mb-4' size='md'>Log in</Button>
 
                                 <div className="text-center">
 
@@ -61,13 +68,18 @@ export const logIn = () => {
                 </MDBRow>
 
             </MDBContainer>
-        </div>
+        </Modal>
     );
 }
 
-export const register = () => {
-    return (
-        <div>
+export const RegistrationModal = (props) => {
+    return(
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
             <MDBContainer fluid className='p-4'>
 
                 <MDBRow>
@@ -103,7 +115,7 @@ export const register = () => {
                                 <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
                                 <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
 
-                                <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
+                                <Button className='w-100 mb-4' size='md'>Sign up</Button>
 
                                 <div className="text-center">
 
@@ -135,6 +147,6 @@ export const register = () => {
                 </MDBRow>
 
             </MDBContainer>
-        </div>
-    );
+        </Modal>
+    )
 }
