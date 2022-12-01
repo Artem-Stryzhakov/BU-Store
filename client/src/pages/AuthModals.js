@@ -36,7 +36,12 @@ export const LoginModal = (props) => {
                                 <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
                                 <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
 
-                                <Button className='w-100 mb-4' size='md'>Log in</Button>
+                                <Button
+                                    className='w-100 mb-4'
+                                    size='md'
+                                    >
+                                    Log in
+                                </Button>
 
                                 <div className="text-center">
 
@@ -115,7 +120,11 @@ export const RegistrationModal = (props) => {
                                 <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'/>
                                 <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
 
-                                <Button className='w-100 mb-4' size='md'>Sign up</Button>
+                                <Button
+                                    className='w-100 mb-4'
+                                    size='md'>
+                                    Sign up
+                                </Button>
 
                                 <div className="text-center">
 

@@ -9,12 +9,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {LoginModal, RegistrationModal} from '../AuthModals'
 
 export const NavScrollExample = () => {
-    const [modalShow1, setModalShow1] = React.useState(false);
-    const [modalShow2, setModalShow2] = React.useState(false);
+    const [modalLoginShow, setModalLoginShow] = React.useState(false);
+    const [modalRegisterShow, setModalRegisterShow] = React.useState(false);
+
+    const isAuth = false;
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Buy and sell</Navbar.Brand>
+                <Navbar.Brand href="#"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081415.png" alt="..." width={'45px'}/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <div>
@@ -47,16 +49,25 @@ export const NavScrollExample = () => {
                         <Button variant="outline-primary">Search</Button>
                     </Form>
                     <div id={'authButtons'}>
-                        <Button variant={"outline-success"} onClick={() => setModalShow1(true)}>Log in</Button>
-                        <LoginModal
-                            show={modalShow1}
-                            onHide={() => setModalShow1(false)}
-                        />
-                        <Button variant={"outline-success"} onClick={() => setModalShow2(true)}>Sign in</Button>
-                        <RegistrationModal
-                            show={modalShow2}
-                            onHide={() => setModalShow2(false)}
-                        />
+                        {isAuth ? (
+                            <>
+                                <Button variant={"outline-success"} onClick={() => setModalLoginShow(true)}>Log in</Button>
+                                <LoginModal
+                                    show={modalLoginShow}
+                                    onHide={() => setModalLoginShow(false)}
+                                />
+                                <Button variant={"success"} onClick={() => setModalRegisterShow(true)}>Sign in</Button>
+                                <RegistrationModal
+                                    show={modalRegisterShow}
+                                    onHide={() => setModalRegisterShow(false)}
+                                />
+                            </>
+                            ) : (
+                            <>
+                                <Button variant={"danger"} >Log out</Button>
+                            </>
+                            )
+                        }
                     </div>
                 </Navbar.Collapse>
             </Container>
