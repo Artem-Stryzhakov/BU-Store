@@ -12,11 +12,17 @@ export const NavScrollExample = () => {
     const [modalLoginShow, setModalLoginShow] = React.useState(false);
     const [modalRegisterShow, setModalRegisterShow] = React.useState(false);
 
-    const isAuth = false;
+    const isAuth = true;
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081415.png" alt="..." width={'45px'}/></Navbar.Brand>
+                <Navbar.Brand href="#">
+                    <img
+                    src="https://cdn-icons-png.flaticon.com/512/3081/3081415.png"
+                    alt="..."
+                    width={'45px'}
+                    id={'mainLogo'}/>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <div>

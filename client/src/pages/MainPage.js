@@ -3,7 +3,12 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import axios from "../axios";
+
 export const MainPage = () => {
+    React.useEffect(() => {
+        axios.get('/getData')
+    }, [])
     return(
         <div>
             <h1>Main Page</h1>

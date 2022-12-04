@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useRoutes} from "./routes";
 import {NavScrollExample} from "./pages/components/navbar";
 
+
 function App() {
     const routes = useRoutes(false)
     return (

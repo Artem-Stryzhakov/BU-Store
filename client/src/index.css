@@ -2,6 +2,14 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+#mainLogo {
+    transition: 0.5s ease-in-out;
+}
+
+#mainLogo:hover {
+    transform: rotate(-360deg);
+}
+
 #searchForm {
     margin: auto;
 }

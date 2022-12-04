@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from "mongoose";
 import path from 'path'
 import multer from 'multer'
+import cors from 'cors'
 
 import {loginValidation, registerValidation } from './validations/auth.js'
 
@@ -32,6 +33,7 @@ const upload = multer({ storage });
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const __dirname = path.resolve()
 
