@@ -3,11 +3,15 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import {useDispatch} from "react-redux";
 import axios from "../axios";
+import {fetchPosts} from "../redux/slices/posts";
 
 export const MainPage = () => {
+    const dispatch = useDispatch()
     React.useEffect(() => {
-        axios.get('/getData')
+        dispatch(fetchPosts())
+        //axios.get('/getData')
     }, [])
     return(
         <div>
