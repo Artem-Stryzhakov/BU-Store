@@ -2,6 +2,7 @@ import React from "react";
 import {Routes, Route} from 'react-router-dom'
 import {MainPage} from "./pages/MainPage";
 import {FeaturesPage} from "./pages/FeaturesPage";
+import {LoginModal} from "./pages/AuthModals";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -16,6 +17,7 @@ export const useRoutes = isAuthenticated => {
         <Routes>
             <Route path={'/'} element={<MainPage/>} />
             <Route path={'/features'} exact element={<FeaturesPage/>}/>
+            <Route path={'/auth/login'} exact element={<LoginModal/>}/>
         </Routes>
     )
 }

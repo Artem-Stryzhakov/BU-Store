@@ -6,11 +6,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import {LoginModal, RegistrationModal} from '../AuthModals'
+import {Link} from "react-router-dom";
 
 export const NavScrollExample = () => {
-    const [modalLoginShow, setModalLoginShow] = React.useState(false);
-    const [modalRegisterShow, setModalRegisterShow] = React.useState(false);
 
     const isAuth = true;
     return (
@@ -57,16 +55,11 @@ export const NavScrollExample = () => {
                     <div id={'authButtons'}>
                         {isAuth ? (
                             <>
-                                <Button variant={"outline-success"} onClick={() => setModalLoginShow(true)}>Log in</Button>
-                                <LoginModal
-                                    show={modalLoginShow}
-                                    onHide={() => setModalLoginShow(false)}
-                                />
-                                <Button variant={"success"} onClick={() => setModalRegisterShow(true)}>Sign in</Button>
-                                <RegistrationModal
-                                    show={modalRegisterShow}
-                                    onHide={() => setModalRegisterShow(false)}
-                                />
+                                <Link to={'/auth/login'}>
+                                    <Button variant={"outline-success"} >Log in</Button>
+                                </Link>
+
+                                <Button variant={"success"}>Sign in</Button>
                             </>
                             ) : (
                             <>

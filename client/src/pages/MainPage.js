@@ -1,17 +1,18 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
-import {useDispatch} from "react-redux";
-import axios from "../axios";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchPosts} from "../redux/slices/posts";
+import {Post} from "./components";
 
 export const MainPage = () => {
     const dispatch = useDispatch()
+    const {posts} = useSelector(state => state.posts)
+
+    const isPostsLoading = posts.status === 'loading';
+
     React.useEffect(() => {
         dispatch(fetchPosts())
-        //axios.get('/getData')
     }, [])
     return(
         <div>
@@ -40,16 +41,21 @@ export const MainPage = () => {
                     />
                 </Carousel.Item>
             </Carousel>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://64.media.tumblr.com/b211d3bfdd614bd59d00b858d527bc8b/tumblr_p9kn0vFQ261sn3ne4o2_540.jpg" />
-                <Card.Body>
-                    <Card.Title>Mage</Card.Title>
-                    <Card.Text>
-                        Fucking mage HA HAGHH!!
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
+
+            {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => isPostsLoading ? (
+                <Post key={index} isLoading = {true}/>
+            ) : (
+                <Post
+                    key={index}
+                    _id = {obj._id}
+                    name = {obj.name}
+                    price = {obj.price}
+                    createdAt = {obj.createAt}
+                    productPicture = {obj.productPicture}
+                    user={obj.user}
+                />
+
+                ))}
         </div>
     )
 }

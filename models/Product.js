@@ -9,6 +9,12 @@ const getDataSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    createAt: Date,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
     productPicture: String
 })
 
