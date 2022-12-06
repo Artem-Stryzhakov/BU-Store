@@ -36,7 +36,6 @@ export const LoginModal = () => {
             <input
                 type="password"
                 placeholder={'type password...'}
-                min={5}
                 {...register('password', {required: 'Enter the password'})}
             />
 
@@ -47,6 +46,26 @@ export const LoginModal = () => {
 
 export const RegistrationModal = () => {
     return(
-        <div></div>
+        <form>
+            <input
+                type="text"
+                placeholder={'type name...'}
+                {/*{...register('', {required: 'Enter the email'})}*/}
+            />
+
+            <input
+                type="email"
+                placeholder={'type email...'}
+                {/*{...register('email', {required: 'Enter the email'})}*/}
+            />
+
+            <input
+                type="password"
+                placeholder={'type password...'}
+                {/*{...register('password', {required: 'Enter the password'})}*/}
+            />
+
+            <Button type={'submit'}>Log in</Button>
+        </form>
     )
 }
