@@ -51,13 +51,13 @@ app.get('/features', (req, res) => {
     res.render('features', {title: "Main Features", active: "features"})
 })
 
-app.get('/express_backend', (req, res) => { //Line 9
+app.get('/express_backend', (req, res) => {
     res.send({ message: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
 });
 
 app.post('/auth/login', loginValidation, UserController.login)
 app.post('/auth/register', registerValidation, UserController.register)
-app.post('/auth/me', checkAuth, UserController.getMe)
+app.get('/auth/me', checkAuth, UserController.getMe)
 
 app.get('/getData', PostController.getData)
 app.post('/pushData', checkAuth, PostController.pushData)
@@ -65,8 +65,6 @@ app.delete('/deleteData/:id', checkAuth, PostController.deleteData)
 app.patch('/updateData/:id', checkAuth, PostController.updateData)
 // ===== THE PICTURE ===== //
 app.post('/upload', upload.single('image'), checkAuth, PostController.uploadImage);
-
-
 
 const port = process.env.PORT || 4444;
 app.listen(port, (err) => {

@@ -6,11 +6,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {logout, selectIsAuth} from "../../redux/slices/auth";
 
 export const NavScrollExample = () => {
+    const dispatch = useDispatch()
+    const isAuth = useSelector(selectIsAuth);
 
-    const isAuth = true;
+    const onClickLogout = () => {
+        if (window.confirm('Are you sure you want to log?')) {
+            dispatch(logout())
+            window.localStorage.removeItem('token')
+        }
+    }
+
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
@@ -43,27 +53,26 @@ export const NavScrollExample = () => {
                             </NavDropdown>
                         </Nav>
                     </div>
-                    <Form className="d-flex" id={'searchForm'}>
-                        <Form.Control
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-primary">Search</Button>
-                    </Form>
                     <div id={'authButtons'}>
                         {isAuth ? (
                             <>
-                                <Link to={'/auth/login'}>
-                                    <Button variant={"outline-success"} >Log in</Button>
-                                </Link>
+                                <div>
+                                    <Link to={'/addProduct'}>
+                                        <Button variant={"outline-primary"} style={{marginRight: '100px'}}>Add Product</Button>
+                                    </Link>
+                                    <Button variant={"danger"} onClick={onClickLogout}>Log out</Button>
+                                </div>
 
-                                <Button variant={"success"}>Sign in</Button>
                             </>
                             ) : (
                             <>
-                                <Button variant={"danger"} >Log out</Button>
+                                <Link to={'/auth/login'}>
+                                <Button variant={"outline-success"} style={{marginRight: '90px'}}>Log in</Button>
+                                </Link>
+
+                                <Link to={'/auth/register'}>
+                                    <Button variant={"success"}>Sign in</Button>
+                                </Link>
                             </>
                             )
                         }

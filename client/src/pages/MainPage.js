@@ -3,10 +3,11 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import {useDispatch, useSelector} from "react-redux";
 import {fetchPosts} from "../redux/slices/posts";
-import {Post} from "./components";
+import {Post} from "./components/Post";
 
 export const MainPage = () => {
     const dispatch = useDispatch()
+    //const userData = useSelector((state) => state.auth.data)
     const {posts} = useSelector(state => state.posts)
 
     const isPostsLoading = posts.status === 'loading';
@@ -14,6 +15,16 @@ export const MainPage = () => {
     React.useEffect(() => {
         dispatch(fetchPosts())
     }, [])
+
+    /*let userData_2;
+    if (userData !== null) {
+        userData_2 = userData
+    }
+
+    if (dispatch(logout)) {
+        userData_2 = false
+    }*/
+
     return(
         <div>
             <h1>Main Page</h1>
@@ -42,7 +53,7 @@ export const MainPage = () => {
                 </Carousel.Item>
             </Carousel>
 
-            {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => isPostsLoading ? (
+            {(isPostsLoading ? [...Array(5)] : posts.items).map( (obj, index) => isPostsLoading ? (
                 <Post key={index} isLoading = {true}/>
             ) : (
                 <Post
@@ -53,8 +64,8 @@ export const MainPage = () => {
                     createdAt = {obj.createAt}
                     productPicture = {obj.productPicture}
                     user={obj.user}
+                    /*isEditable={ userData?._id === obj.user }*/
                 />
-
                 ))}
         </div>
     )

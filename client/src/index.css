@@ -15,6 +15,9 @@ body::-webkit-scrollbar {
 }
 
 #authButtons Button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
     border-radius: 8px;
 }
 
