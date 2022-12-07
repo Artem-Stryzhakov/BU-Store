@@ -65,7 +65,7 @@ export const Post = ({
                                 <></>
                             )}
 
-                            <p className="card-text">{price}</p>
+                            <p className="card-text">{price} $</p>
                             <p className="card-text"><small className="text-muted">{user}</small></p>
                             <p className="card-text"><small className="text-muted">{createdAt}</small></p>
                         </div>

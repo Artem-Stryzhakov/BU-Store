@@ -43,7 +43,7 @@ export const LoginModal = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={'formLogin'}>
             <input
                 type="email"
                 placeholder={'type email...'}
@@ -99,7 +99,7 @@ export const RegistrationModal = () => {
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={'formLogin'}>
             <input
                 type="text"
                 placeholder={'type name...'}

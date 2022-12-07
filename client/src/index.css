@@ -26,3 +26,14 @@ body::-webkit-scrollbar {
     gap: 10px;
     margin: 5px;
 }
+
+.formLogin {
+    display: grid;
+    width: 50%;
+    margin: 100px auto auto;
+    height: 200px;
+}
+
+.formLogin button{
+    margin-top: 10px;
+}
