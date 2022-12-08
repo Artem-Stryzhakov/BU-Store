@@ -10,7 +10,7 @@ export const AddProduct = () => {
         return <Navigate to={'/'}/>
     }
 
-    const [name, price] = React.useState('')
+    const [name, price] = useState('')
 
     return(
         <div>

@@ -24,7 +24,7 @@ export const NavScrollExample = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">
+                <Navbar.Brand href="https://www.okidoki.ee/" target={'_blank'}>
                     <img
                     src="https://cdn-icons-png.flaticon.com/512/3081/3081415.png"
                     alt="..."
@@ -40,26 +40,15 @@ export const NavScrollExample = () => {
                             navbarScroll
                         >
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/features">Features</Nav.Link>
-                            <NavDropdown title="Link" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
-                                    Something else here
-                                </NavDropdown.Item>
-                            </NavDropdown>
                         </Nav>
                     </div>
                     <div id={'authButtons'}>
                         {isAuth ? (
                             <>
                                 <div>
-                                    <Link to={'/addProduct'}>
+                                    {/*<Link to={'/addProduct'}>
                                         <Button variant={"outline-primary"} style={{marginRight: '100px'}}>Add Product</Button>
-                                    </Link>
+                                    </Link>*/}
                                     <Button variant={"danger"} onClick={onClickLogout}>Log out</Button>
                                 </div>
 

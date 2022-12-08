@@ -14,7 +14,7 @@ function App() {
         dispatch(fetchAuthMe())
     }, [])
 
-    const routes = useRoutes(isAuth)
+    const routes = useRoutes(false)
     return (
         <BrowserRouter>
             <NavScrollExample/>
